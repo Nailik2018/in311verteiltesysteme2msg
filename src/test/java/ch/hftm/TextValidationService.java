@@ -24,8 +24,8 @@ public class TextValidationService {
     @Outgoing("text-validator-response")
     @Blocking
     public Multi<Blog> validateText(Blog blog) {
-        boolean containsHFTM = blog.getContent().toLowerCase().contains("hftm");
-        blog.setIsValid(!containsHFTM);
+        boolean containsJava = blog.getContent().toLowerCase().contains("java");
+        blog.setIsValid(!containsJava);
         blogEmitter.send(blog);
         return Multi.createFrom().item(blog);
     }
