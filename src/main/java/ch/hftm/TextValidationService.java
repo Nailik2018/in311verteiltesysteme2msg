@@ -13,7 +13,7 @@ public class TextValidationService {
 //    @Blocking
     public Multi<TextValidatorResponseDto> validateText(Multi<TextValidatorResponseDto> textValidatorResponseDto) {
         return textValidatorResponseDto.onItem().transform(item -> {
-            item.setValid(item.getText().toLowerCase().contains("nodejs"));
+            item.setValid(item.getText().toLowerCase().contains("bangladesch"));
             System.out.println(item);
             System.out.println(item.getText());
             System.out.println(item.getValid());
