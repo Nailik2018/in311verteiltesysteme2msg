@@ -16,17 +16,19 @@ import io.smallrye.reactive.messaging.annotations.Blocking;
 @ApplicationScoped
 public class TextValidationService {
 
-    @Inject
-    @Channel("text-validator-request")
-    Emitter<Blog> blogEmitter;
+//    @Inject
+//    @Channel("text-validator-request")
+//    Emitter<Blog> blogEmitter;
 
     @Incoming("text-validator-request")
     @Outgoing("text-validator-response")
-    @Blocking
+//    @Blocking
     public Multi<Blog> validateText(Blog blog) {
+        System.out.println("Blog is valid: " + blog.getTitle());
         boolean containsJava = blog.getContent().toLowerCase().contains("java");
         blog.setIsValid(!containsJava);
-        blogEmitter.send(blog);
+
+//        blogEmitter.send(blog);
         return Multi.createFrom().item(blog);
     }
 }
